@@ -1,0 +1,38 @@
+.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 3.5px;
+}
+
+.link.active {
+  fill: none;
+  stroke: #03f62a;
+  stroke-width: 3.5px;
+}
+  
+circle {
+  fill: #ccc;
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+
+svg {
+    border: solid;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+button {
+    position: absolute;
+    width: 50px;
+}
+
+button#play {
+    margin-left: 23%;
+    margin-top: 30px;
+}
+
+button#stop {
+    margin-top: 50px;
+    margin-left: 23%;
+}
