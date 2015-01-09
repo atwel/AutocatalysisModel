@@ -97,7 +97,10 @@ for GRAPH in GRAPH_TYPES:
               						else:
               							stack[URN].append(sum(vals)/count_runs)
               					except:
-              						stack[URN] = [sum(vals)/count_runs]
+              						if count_runs == 0:
+              							stack[URN] = [0]
+              						else:
+              							stack[URN] = [sum(vals)/count_runs]
 
 
 	if GRAPH == "Cycles Alive":
