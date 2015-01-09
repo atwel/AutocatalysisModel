@@ -38,6 +38,7 @@ GRAPH_TYPES = ["Cycles Alive","3+ Rules Alive", "Cell Count"]
 x = [2,3,4,5,6,7,8,9]
 for GRAPH in GRAPH_TYPES:
 	stack = {}
+	max_cell_cnt = 0
 	for TYPES in PRODUCT_TYPES:
 		for CHEM in CHEMISTRY:
 			for INTEL in INTEL_TYPE:
@@ -95,12 +96,17 @@ for GRAPH in GRAPH_TYPES:
               						if count_runs == 0:
               							stack[URN].append(0)
               						else:
-              							stack[URN].append(sum(vals)/count_runs)
+              							val = sum(vals)/count_runs
+              							stack[URN].append(val)
               					except:
               						if count_runs == 0:
               							stack[URN] = [0]
               						else:
-              							stack[URN] = [sum(vals)/count_runs]
+              							val = sum(vals)/count_runs
+              							stack[URN] = [val]
+              					if  val > max_cell_cnt:
+							max_cell_cnt = val 
+
 
 
 	if GRAPH == "Cycles Alive":
@@ -125,7 +131,7 @@ for GRAPH in GRAPH_TYPES:
 
 	elif GRAPH == "Cell Count":
 		x = [2,3,4,5,6,7,8,9]
-		plt.axis([1,10,-.5,14.5])
+		plt.axis([1,10,-.5,(max_cell_cnt*1.1])
 		plt.plot(x,stack["fixed-rich-source"], label="source-rich", color="k", marker="s",markeredgecolor="k",ms=8,linestyle="solid", linewidth=2)
 		plt.plot(x,stack["fixed-poor-source"], label="souce-poor", color="k", marker="^",linestyle="solid",linewidth=2,markeredgecolor="k",ms=8)
 		plt.plot(x,stack["endo-rich-source"], label="stigmergy-rich", color="r", marker="s",linestyle="solid",linewidth=2,markeredgecolor="r",ms=8)
